@@ -5,6 +5,7 @@ import org.assertj.core.api.Assertions;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -36,7 +37,7 @@ public class ArenaTest {
         WebElement password = driver.findElement(By.id("password"));
         WebElement login = driver.findElement(By.id("login"));
 
-        WebElement odzyskajHaslo = driver.findElement(By.cssSelector("a[href='http://demo.testarena.pl/odzyskaj_haslo']"));
+        //WebElement odzyskajHaslo = driver.findElement(By.cssSelector("a[href='http://demo.testarena.pl/odzyskaj_haslo']"));
 
         email.sendKeys("administrator@testarena.pl");
         password.sendKeys("sumXQQ72$L");
@@ -48,5 +49,36 @@ public class ArenaTest {
         Assertions.assertThat(driver.getTitle()).contains("Kokpit");
         driver.quit();
     }
+
+
+    @Test
+    public void mySecondInteractionTest() {
+        driver = new ChromeDriver();
+        driver.get("http://demo.testarena.pl/zaloguj");
+
+        WebElement login = driver.findElement(By.id("login"));
+
+        login.click();
+
+        new WebDriverWait(driver, 3, 250)
+                .until(ExpectedConditions.presenceOfElementLocated(By.className("login_form_error")));
+
+        driver.quit();
+    }
+
+    @Test
+    public void szukajVistulaWGoogle(){
+        driver = new ChromeDriver();
+        driver.get("https://google.pl");
+
+        WebElement poleSzukania = driver.findElement(By.cssSelector("input[type='text']"));
+        poleSzukania.click();
+        poleSzukania.sendKeys("Vistula University");
+        poleSzukania.sendKeys(Keys.ENTER);
+        //driver.quit();
+    }
+
+
+
 
 }
