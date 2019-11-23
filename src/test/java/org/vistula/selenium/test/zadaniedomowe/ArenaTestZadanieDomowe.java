@@ -10,6 +10,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.vistula.selenium.test.zadaniedomowe.pop.LogInPage;
+import org.vistula.selenium.test.zadaniedomowe.pop.MainScreenPage;
+import org.vistula.selenium.test.zadaniedomowe.pop.ProjectsPage;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
@@ -31,10 +33,13 @@ public class ArenaTestZadanieDomowe {
 
         LogInPage logInPage = new LogInPage(driver);
         logInPage.logIn();
-        WebElement adminPanelLink = driver.findElement(By.cssSelector("a[href='http://demo.testarena.pl/administration']"));
-        adminPanelLink.click();
-        WebElement addProjectLink = driver.findElement(By.cssSelector("a[href='http://demo.testarena.pl/administration/add_project']"));
-        addProjectLink.click();
+
+        MainScreenPage mainScreenPage = new MainScreenPage(driver);
+        mainScreenPage.openAdminPanel();
+
+        ProjectsPage projectsPage = new ProjectsPage(driver);
+        projectsPage.addNewProject();
+
         WebElement projectNameInput = driver.findElement(By.id("name"));
         projectNameInput.click();
         String projectName = RandomStringUtils.randomAlphabetic(10, 20);
