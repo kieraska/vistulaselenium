@@ -1,6 +1,5 @@
 package org.vistula.selenium.test.zadaniedomowe.pop;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,13 +10,13 @@ public class LogInPage {
     private WebDriver driver;
 
     @FindBy(id = "email")
-    private WebElement login;
+    private WebElement loginInput;
 
     @FindBy(id = "password")
-    private WebElement password;
+    private WebElement passwordInput;
 
     @FindBy(id = "login")
-    private WebElement buttonZaloguj;
+    private WebElement loginButton;
 
     public LogInPage(WebDriver driver) {
         this.driver = driver;
@@ -25,10 +24,10 @@ public class LogInPage {
     }
 
     public void logIn() {
-        login.click();
-        login.sendKeys("administrator@testarena.pl");
-        password.sendKeys("sumXQQ72$L");
-        buttonZaloguj.click();
+        loginInput.click();
+        loginInput.sendKeys("administrator@testarena.pl");
+        passwordInput.sendKeys("sumXQQ72$L");
+        loginButton.click();
     }
 
 

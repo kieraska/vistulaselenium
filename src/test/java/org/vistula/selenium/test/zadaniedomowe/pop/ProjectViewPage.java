@@ -10,7 +10,7 @@ public class ProjectViewPage {
     private WebDriver driver;
 
     @FindBy(css = "a[href='http://demo.testarena.pl/administration/projects']")
-    private WebElement projectsButton;
+    private WebElement projectsLink;
 
     public ProjectViewPage(WebDriver driver) {
         this.driver = driver;
@@ -18,6 +18,6 @@ public class ProjectViewPage {
     }
 
     public void openProjectList() {
-        projectsButton.click();
+        projectsLink.click();
     }
 }

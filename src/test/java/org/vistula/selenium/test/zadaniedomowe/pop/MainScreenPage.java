@@ -1,6 +1,5 @@
 package org.vistula.selenium.test.zadaniedomowe.pop;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -11,7 +10,7 @@ public class MainScreenPage {
     private WebDriver driver;
 
     @FindBy(css = "a[href='http://demo.testarena.pl/administration']")
-    private WebElement adminPanel;
+    private WebElement adminPanelLink;
 
     public MainScreenPage(WebDriver driver) {
         this.driver = driver;
@@ -19,6 +18,6 @@ public class MainScreenPage {
     }
 
     public void openAdminPanel() {
-        adminPanel.click();
+        adminPanelLink.click();
     }
 }

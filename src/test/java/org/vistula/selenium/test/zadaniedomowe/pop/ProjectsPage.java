@@ -12,7 +12,7 @@ public class ProjectsPage {
     private WebDriver driver;
 
     @FindBy(css = "a[href='http://demo.testarena.pl/administration/add_project']")
-    private WebElement addProject;
+    private WebElement addProjectLink;
 
     public ProjectsPage(WebDriver driver) {
         this.driver = driver;
@@ -20,7 +20,7 @@ public class ProjectsPage {
     }
 
     public void addNewProject() {
-        addProject.click();
+        addProjectLink.click();
     }
 
     public void findAddedProject(String projectName) {
