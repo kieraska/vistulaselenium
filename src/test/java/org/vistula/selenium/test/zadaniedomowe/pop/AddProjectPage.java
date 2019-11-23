@@ -27,14 +27,21 @@ public class AddProjectPage {
         PageFactory.initElements(driver, this);
     }
 
-    public void enterProjectData() {
-        String projectName = RandomStringUtils.randomAlphabetic(10, 20);
+    public void enterProjectData(String projectName) {
+        enterProjectName(projectName);
+        enterPrefix();
+        saveButton.click();
+    }
+
+    public void enterProjectName(String projectName) {
         projectNameInput.sendKeys(projectName);
+    }
+
+    public void enterPrefix() {
         String prefixText = RandomStringUtils.randomAlphabetic(2, 5);
         String prefixNumber = randomNumeric(2, 5);
         String prefix = prefixText + prefixNumber;
         prefixInput.sendKeys(prefix);
-        saveButton.click();
     }
 }
 

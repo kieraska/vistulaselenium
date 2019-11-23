@@ -1,5 +1,7 @@
 package org.vistula.selenium.test.zadaniedomowe.pop;
 
+import org.assertj.core.api.Assertions;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,5 +21,11 @@ public class ProjectsPage {
 
     public void addNewProject() {
         addProject.click();
+    }
+
+    public void findAddedProject(String projectName) {
+        WebElement newProject = driver.findElement(By.linkText(projectName));
+        String foundProjectName = newProject.getText();
+        Assertions.assertThat(foundProjectName).isEqualTo(projectName);
     }
 }

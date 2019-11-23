@@ -39,14 +39,13 @@ public class ArenaTestZadanieDomowe {
         projectsPage.addNewProject();
 
         AddProjectPage addProjectPage = new AddProjectPage(driver);
-        addProjectPage.enterProjectData();
+        String projectName = RandomStringUtils.randomAlphabetic(10, 20);
+        addProjectPage.enterProjectData(projectName);
 
         ProjectViewPage projectViewPage = new ProjectViewPage(driver);
         projectViewPage.openProjectList();
 
-      //  WebElement newProject = driver.findElement(By.linkText(projectName));
-      //  String foundProjectName = newProject.getText();
-       // Assertions.assertThat(foundProjectName).isEqualTo(projectName);
+        projectsPage.findAddedProject(projectName);
     }
 
 }
