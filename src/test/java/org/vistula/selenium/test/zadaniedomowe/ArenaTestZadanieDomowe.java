@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.vistula.selenium.test.zadaniedomowe.pop.LogInPage;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
@@ -27,13 +28,9 @@ public class ArenaTestZadanieDomowe {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("http://demo.testarena.pl/zaloguj");
-        WebElement loginInput = driver.findElement(By.id("email"));
-        WebElement passwordInput = driver.findElement(By.id("password"));
-        WebElement loginButton = driver.findElement(By.id("login"));
-        loginInput.click();
-        loginInput.sendKeys("administrator@testarena.pl");
-        passwordInput.sendKeys("sumXQQ72$L");
-        loginButton.click();
+
+        LogInPage logInPage = new LogInPage(driver);
+        logInPage.logIn();
         WebElement adminPanelLink = driver.findElement(By.cssSelector("a[href='http://demo.testarena.pl/administration']"));
         adminPanelLink.click();
         WebElement addProjectLink = driver.findElement(By.cssSelector("a[href='http://demo.testarena.pl/administration/add_project']"));
