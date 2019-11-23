@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.vistula.selenium.test.zadaniedomowe.pop.AddProjectPage;
 import org.vistula.selenium.test.zadaniedomowe.pop.LogInPage;
 import org.vistula.selenium.test.zadaniedomowe.pop.MainScreenPage;
 import org.vistula.selenium.test.zadaniedomowe.pop.ProjectsPage;
@@ -40,23 +41,14 @@ public class ArenaTestZadanieDomowe {
         ProjectsPage projectsPage = new ProjectsPage(driver);
         projectsPage.addNewProject();
 
-        WebElement projectNameInput = driver.findElement(By.id("name"));
-        projectNameInput.click();
-        String projectName = RandomStringUtils.randomAlphabetic(10, 20);
-        projectNameInput.sendKeys(projectName);
-        WebElement prefixInput = driver.findElement(By.id("prefix"));
-        prefixInput.click();
-        String prefixText = RandomStringUtils.randomAlphabetic(2, 5);
-        String prefixNumber = randomNumeric(2, 5);
-        String prefixTextAndNumber = prefixText + prefixNumber;
-        prefixInput.sendKeys(prefixTextAndNumber);
-        WebElement saveButton = driver.findElement(By.id("save"));
-        saveButton.click();
+        AddProjectPage addProjectPage = new AddProjectPage(driver);
+        addProjectPage.enterProjectData();
+
         WebElement projectsLink = driver.findElement(By.cssSelector("a[href='http://demo.testarena.pl/administration/projects']"));
         projectsLink.click();
-        WebElement newProject = driver.findElement(By.linkText(projectName));
-        String foundProjectName = newProject.getText();
-        Assertions.assertThat(foundProjectName).isEqualTo(projectName);
+      //  WebElement newProject = driver.findElement(By.linkText(projectName));
+      //  String foundProjectName = newProject.getText();
+       // Assertions.assertThat(foundProjectName).isEqualTo(projectName);
     }
 
 }
