@@ -14,21 +14,10 @@ import org.vistula.selenium.test.zadaniedomowe.pop.*;
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 
-public class ArenaTestZadanieDomowe {
-
-    private WebDriver driver;
-
-    @BeforeClass
-    public static void setDriver() {
-        WebDriverManager.chromedriver().setup();
-    }
+public class ArenaTestZadanieDomowe extends BaseTest{
 
     @Test
-    public void logowanie(){
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.get("http://demo.testarena.pl/zaloguj");
-
+    public void addNewProjectTest(){
         LogInPage logInPage = new LogInPage(driver);
         logInPage.logIn();
 
