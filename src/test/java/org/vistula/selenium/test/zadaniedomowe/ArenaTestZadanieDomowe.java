@@ -9,10 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.vistula.selenium.test.zadaniedomowe.pop.AddProjectPage;
-import org.vistula.selenium.test.zadaniedomowe.pop.LogInPage;
-import org.vistula.selenium.test.zadaniedomowe.pop.MainScreenPage;
-import org.vistula.selenium.test.zadaniedomowe.pop.ProjectsPage;
+import org.vistula.selenium.test.zadaniedomowe.pop.*;
 
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
 import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
@@ -44,8 +41,9 @@ public class ArenaTestZadanieDomowe {
         AddProjectPage addProjectPage = new AddProjectPage(driver);
         addProjectPage.enterProjectData();
 
-        WebElement projectsLink = driver.findElement(By.cssSelector("a[href='http://demo.testarena.pl/administration/projects']"));
-        projectsLink.click();
+        ProjectViewPage projectViewPage = new ProjectViewPage(driver);
+        projectViewPage.openProjectList();
+
       //  WebElement newProject = driver.findElement(By.linkText(projectName));
       //  String foundProjectName = newProject.getText();
        // Assertions.assertThat(foundProjectName).isEqualTo(projectName);
